@@ -15,6 +15,10 @@ export function TaskManagementViewModel() {
       name: "Done",
       background: "from-emerald-500/30 via-teal-400/20 to-teal-300/10",
     },
+    {
+      name: "Approved",
+      background: "from-rose-500/30 via-rose-400/20 to-rose-300/10",
+    },
   ];
 
   const [tasks, setTasks] = useState([

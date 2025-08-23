@@ -44,7 +44,7 @@ export default function Navbar() {
             <SearchComponent />
           </div>
 
-          <Link href="/about" className="flex gap-1 items-center">
+          <Link href="/signin" className="flex gap-1 items-center">
             <FaUser />
             Sign in
           </Link>

@@ -27,10 +27,14 @@ const Home = () => {
       </div>
       <div className="flex flex-col lg:flex-row gap-6 w-full">
         <div className="w-full lg:w-[60%] bg-gradient-to-r from-[#060B26] to-[#1A1F37]/50 backdrop-blur-md rounded-2xl p-6">
-          <h2 className="text-white text-xl font-bold mb-2">Sales Overview</h2>
-          <div className="flex items-center text-sm text-green-500 font-semibold mb-6">
-            +5% more{" "}
-            <span className="ml-1 text-gray-400 font-normal">in 2025</span>
+          <h2 className="text-white text-xl font-bold mb-2">
+            Project Progress
+          </h2>
+          <div className="flex items-center text-sm text-green-500 font-semibold ">
+            {/* +5% more{" "} */}
+            <span className=" text-gray-400 font-normal">
+              Monthly Project Completion Trend
+            </span>
           </div>
           <div className="h-[310px]">
             <LineChart
@@ -40,7 +44,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-full lg:w-[40%] bg-gradient-to-r from-[#060B26] to-[#1A1F37]/50 backdrop-blur-md rounded-2xl p-6 space-y-6">
+        <div className="w-full lg:w-[40%] bg-gradient-to-r from-[#060B26] to-[#1A1F37]/50 backdrop-blur-md rounded-2xl p-6 space-y-5">
           <div
             className="h-[220px] rounded-2xl overflow-hidden"
             style={{ background: "linear-gradient(310deg, #1a73e8, #66bb6a)" }}
@@ -50,13 +54,13 @@ const Home = () => {
               barChartOptions={model.monthChartOptions}
             />
           </div>
-          <h2 className="text-white text-xl font-bold mb-2">Team Workload</h2>
-          <div className="flex items-center text-sm text-green-500 font-semibold mb-6">
+          <h2 className="text-white text-xl font-bold ">Team Workload</h2>
+          {/* <div className="flex items-center text-sm text-green-500 font-semibold mb-2  ">
             (+23){" "}
-            <span className="ml-1 text-gray-400 font-normal">
-              than last week
+            <span className=" text-gray-400 font-normal">
+              Team Workload Distribution
             </span>
-          </div>
+          </div> */}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <CardActiveUser icon={IoWallet} title="Total" count="12" />
