@@ -1,22 +1,28 @@
+"use client";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
 import { Inter } from "next/font/google";
 import "../../app/globals.css";
+import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [onSideBar, setOnSideBar] = useState(false);
   return (
     <html lang="en">
       <body className={inter.className}>
-        <section className="flex flex-row gap-5 items-start">
-          <Sidebar />
-          <section className="grow mt-5 m-5 relative space-y-10 ml-[250px]">
-            <Navbar />
-            <div className="w-[calc(100%-1rem)]"> {children}</div>
+        <section className="flex">
+          {/* Sidebar */}
+          <Sidebar onSideBar={onSideBar} />
+
+          <section className="flex flex-col w-full">
+            <Navbar setOnSideBar={setOnSideBar} onSideBar={onSideBar} />
+            {/* <section className="flex-grow p-5 mt-5 h-[87vh] overflow-auto">
+              {children}
+            </section> */}
           </section>
         </section>
       </body>

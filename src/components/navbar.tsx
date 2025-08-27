@@ -1,61 +1,47 @@
 "use client";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { AlignJustify, CircleUser, Search } from "lucide-react";
 import { FaBell, FaUser } from "react-icons/fa6";
 import { IoMdSettings } from "react-icons/io";
-import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import SearchComponent from "./custom/Seacrh";
-export default function Navbar() {
-  const [navBackground, setnavBackground] = useState(false);
-  const changeBackground = () => {
-    if (window.scrollY >= 10) {
-      setnavBackground(true);
-    } else {
-      setnavBackground(false);
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", changeBackground);
-    return () => {
-      window.removeEventListener("scroll", changeBackground);
-    };
-  });
+import { AlignJustify } from "lucide-react";
+interface types {
+  setOnSideBar: React.Dispatch<React.SetStateAction<boolean>>;
+  onSideBar: boolean;
+}
+export default function Navbar({ setOnSideBar, onSideBar }: types) {
   return (
-    <>
-      {/* <nav className="fixed   "> */}
-      <div
-        className={`sticky top-0 left-0 z-50 w-full flex items-center justify-between rounded-2xl px-6 py-4 font-semibold text-white transition-all duration-300 
-    ${
-      navBackground
-        ? "rounded-2xl border border-white shadow-md backdrop-blur-lg"
-        : " "
-    }
-  `}
-      >
-        <Link href={"/"} className="font-semibold text-lg">
-          Dashboard
-        </Link>
+    <nav className="w-full z-50 top-0 bg-white shadow-md">
+      <div className="flex items-center justify-between px-6 h-16 md:h-20 max-w-full transition-all">
+        <div className="flex items-center gap-10">
+          {" "}
+          <AlignJustify
+            onClick={() => setOnSideBar(!onSideBar)}
+            className="cursor-pointer"
+          />
+          <Link href="/" className="font-bold text-2xl text-[#05004E]">
+            Dashboard
+          </Link>
+        </div>
 
-        <div className="hidden md:flex gap-3 text-sm felx items-center">
-          <div className="">
-            {" "}
+        <div className="flex items-center gap-6">
+          <div className="hidden md:block w-64">
             <SearchComponent />
           </div>
 
-          <Link href="/signin" className="flex gap-1 items-center">
-            <FaUser />
-            Sign in
-          </Link>
-          {/* <Link href="/services "> */}
-          <IoMdSettings className="w-5 h-5" />
-          {/* </Link> */}
-          <FaBell className="w-5 h-5" />
-          {/* <Link href="/team">Teams</Link> */}
+          <div className="flex items-center gap-6 text-gray-600">
+            <Link
+              href="/signin"
+              className="flex items-center gap-2 text-gray-600 hover:text-[#05004E] transition"
+            >
+              <FaUser className="w-4 h-4" />
+              <span className="text-sm">Sign in</span>
+            </Link>
+
+            <IoMdSettings className="w-5 h-5 cursor-pointer hover:text-[#05004E]" />
+            <FaBell className="w-5 h-5 cursor-pointer hover:text-[#05004E]" />
+          </div>
         </div>
       </div>
-      {/* </nav> */}
-    </>
+    </nav>
   );
 }
