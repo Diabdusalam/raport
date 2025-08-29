@@ -38,7 +38,14 @@ export default function Navbar({ setOnSideBar, onSideBar }: types) {
             </Link>
 
             <IoMdSettings className="w-5 h-5 cursor-pointer hover:text-[#05004E]" />
-            <FaBell className="w-5 h-5 cursor-pointer hover:text-[#05004E]" />
+            <div className="relative inline-block">
+              <span className="absolute -top-1 right-0 flex size-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+                <span className="relative inline-flex size-2 rounded-full bg-red-500"></span>
+              </span>
+
+              <FaBell className="w-5 h-5 cursor-pointer hover:text-[#05004E]" />
+            </div>
           </div>
         </div>
       </div>

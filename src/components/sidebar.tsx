@@ -1,17 +1,16 @@
 "use client";
 
 import {
-  BookImage,
   ChartNoAxesColumn,
   ChartPie,
-  ChevronDownIcon,
+  LogOut,
   LucideIcon,
-  Plane,
   SquareCheckBig,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
-import ButtonSidebar from "./ui/button-sidebar";
 import { useState } from "react";
+import ButtonSidebar from "./ui/button/button-sidebar";
+import ButtonSidebarChildren from "./ui/button/button-sidebar-children";
 
 interface type {
   onSideBar: boolean;
@@ -50,16 +49,29 @@ export default function Sidebar({ onSideBar }: type) {
     },
     {
       id: "3",
-      name: "Table",
+      name: "Raport",
       icon: ChartNoAxesColumn,
-      link: "/table",
-      children: [],
+      link: "",
+      children: [
+        {
+          id: "1",
+          name: "Raport Student",
+          icon: SquareCheckBig,
+          link: "/raport-student",
+        },
+        {
+          id: "2",
+          name: "Raport Teacher",
+          icon: SquareCheckBig,
+          link: "/raport-teacher",
+        },
+      ],
     },
     {
       id: "4",
       name: "Master Data",
       icon: ChartPie,
-      link: "/dashboard",
+      link: "",
       children: [
         {
           id: "1",
@@ -71,11 +83,11 @@ export default function Sidebar({ onSideBar }: type) {
           id: "2",
           name: "Student",
           icon: SquareCheckBig,
-          link: "/student",
+          link: "/master-data/students",
         },
         {
           id: "3",
-          name: "Classroom",
+          name: "Class",
           icon: SquareCheckBig,
           link: "/class",
         },
@@ -91,6 +103,12 @@ export default function Sidebar({ onSideBar }: type) {
           icon: SquareCheckBig,
           link: "/schedule",
         },
+        {
+          id: "6",
+          name: "Majore",
+          icon: SquareCheckBig,
+          link: "/majore",
+        },
       ],
     },
   ];
@@ -98,23 +116,20 @@ export default function Sidebar({ onSideBar }: type) {
   return (
     <aside
       className={` top-0 ${
-        onSideBar ? "w-[250px]" : "w-[72px]"
-      } h-screen py-7 p-2 space-y-6 transition-all  text-white z-50 bg-[#F0F7FD]`}
+        onSideBar ? "w-[300px]" : "w-[72px]"
+      } h-screen py-7 p-2 space-y-6 transition-[width] duration-300  text-white z-50 bg-[#F0F7FD]`}
     >
       <div className="text-lg font-bold mb-4 text-center text-[#05004E] ">
         MENU
       </div>
-      <div className="">
+      <div>
         {mainLinks.map((item) => (
-          <div key={item.id}>
-            <div
-              // className="flex items-center justify-between"
-              onClick={() => item.children && handleToggleChildren(item.id)}
-            >
+          <div key={item.id} className="relative">
+            <div onClick={() => item.children && handleToggleChildren(item.id)}>
               <ButtonSidebar
                 key={item.id}
                 data={item}
-                isActive={pathname === item.link}
+                isActive={openMenuId === item.id}
                 showName={onSideBar}
                 openMenuId={openMenuId}
               />
@@ -123,9 +138,15 @@ export default function Sidebar({ onSideBar }: type) {
             {openMenuId === item.id &&
               item.children &&
               item.children.length > 0 && (
-                <div className="ml-6 ">
+                <div
+                  className={` transition-all border-teal-50 ${
+                    onSideBar
+                      ? "mt-2 ml-8 "
+                      : "mt-1 absolute top-0 bg-[#e6fcff] left-[74px] px-2 py-2 rounded-lg  "
+                  }`}
+                >
                   {item.children.map((child) => (
-                    <ButtonSidebar
+                    <ButtonSidebarChildren
                       key={child.id}
                       data={child}
                       isActive={pathname === child.link}
@@ -137,47 +158,20 @@ export default function Sidebar({ onSideBar }: type) {
           </div>
         ))}
       </div>
-      {/* <div className="space-y-4">
-        {mainLinks.map((item) => (
-          <div key={item.id}>
-            {" "}
-            <ButtonSidebar
-              key={item.id}
-              data={item}
-              isActive={pathname === item.link}
-              showName={onSideBar}
-            />
-            {item.children && item.children.length > 0 && (
-              <div className="ml-6 space-y-2">
-                {item.children.map((child) => (
-                  <ButtonSidebar
-                    key={child.id}
-                    data={child}
-                    isActive={pathname === child.link}
-                    showName={onSideBar}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div> */}
+      <div className="absolute bottom-2">
+        <ButtonSidebar
+          data={{
+            id: "5",
+            name: "Logout",
+            icon: LogOut,
+            link: "/",
+          }}
+          iconColor="text-red-500"
+          isActive={false}
+          showName={onSideBar}
+          openMenuId={openMenuId}
+        />
+      </div>
     </aside>
   );
-}
-{
-  /* <div className="mt-6">
-        <p className="text-xs text-gray-400 uppercase font-semibold mb-2">
-          Account Pages
-        </p>
-        <div className="space-y-4">
-          {accountLinks.map((item) => (
-            <ButtonSidebar
-              key={item.id}
-              data={item}
-              isActive={pathname === item.link}
-            />
-          ))}
-        </div>
-      </div> */
 }

@@ -1,7 +1,5 @@
 "use client";
 
-import BarChart from "@/components/charts/barChart";
-import LineChart from "@/components/charts/lineCharts";
 import CardActiveUser from "@/components/custom/card-active-user";
 import CardCustom from "@/components/custom/card-custom";
 import { IoIosRocket } from "react-icons/io";
@@ -37,10 +35,10 @@ const Home = () => {
             </span>
           </div>
           <div className="h-[310px]">
-            <LineChart
+            {/* <LineChart
               lineChartData={model.lineChartDataDashboard}
               lineChartOptions={model.monthChartOptions}
-            />
+            /> */}
           </div>
         </div>
 
@@ -49,24 +47,18 @@ const Home = () => {
             className="h-[220px] rounded-2xl overflow-hidden"
             style={{ background: "linear-gradient(310deg, #1a73e8, #66bb6a)" }}
           >
-            <BarChart
+            {/* <BarChart
               barChartData={model.barChartDataDashboard}
               barChartOptions={model.monthChartOptions}
-            />
+            /> */}
           </div>
           <h2 className="text-white text-xl font-bold ">Team Workload</h2>
-          {/* <div className="flex items-center text-sm text-green-500 font-semibold mb-2  ">
-            (+23){" "}
-            <span className=" text-gray-400 font-normal">
-              Team Workload Distribution
-            </span>
-          </div> */}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <CardActiveUser icon={IoWallet} title="Total" count="12" />
             <CardActiveUser icon={IoIosRocket} title="Over" count="3" />
             <CardActiveUser icon={IoIosRocket} title="Idle" count="2" />
-            <CardActiveUser icon={IoIosRocket} title="Avg Taks " count="254" />
+            <CardActiveUser icon={IoIosRocket} title="Avg Task " count="254" />
           </div>
         </div>
       </div>{" "}
