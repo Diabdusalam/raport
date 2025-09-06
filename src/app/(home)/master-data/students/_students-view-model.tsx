@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import { use, useEffect, useState } from "react";
 
 export function StudentsViewModel() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   interface DataStudent {
     id: number;
     name: string;
@@ -72,5 +73,12 @@ export function StudentsViewModel() {
     }
   }, [selectedId !== 0]);
 
-  return { response, selectedId, setSelectedId, setValues };
+  return {
+    response,
+    selectedId,
+    isModalOpen,
+    setIsModalOpen,
+    setSelectedId,
+    setValues,
+  };
 }

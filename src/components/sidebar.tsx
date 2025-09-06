@@ -3,12 +3,14 @@
 import {
   ChartNoAxesColumn,
   ChartPie,
+  Database,
   LogOut,
   LucideIcon,
+  NotebookPen,
   SquareCheckBig,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonSidebar from "./ui/button/button-sidebar";
 import ButtonSidebarChildren from "./ui/button/button-sidebar-children";
 
@@ -69,15 +71,35 @@ export default function Sidebar({ onSideBar }: type) {
     },
     {
       id: "4",
+      name: "Transactional Data",
+      icon: Database,
+      link: "",
+      children: [
+        {
+          id: "1",
+          name: "Grades",
+          icon: NotebookPen,
+          link: "/transactional-data/grades",
+        },
+        {
+          id: "2",
+          name: "Attendance",
+          icon: NotebookPen,
+          link: "/transactional-data/attendance",
+        },
+      ],
+    },
+    {
+      id: "5",
       name: "Master Data",
       icon: ChartPie,
       link: "",
       children: [
         {
           id: "1",
-          name: "Teacher",
+          name: "Teachers",
           icon: SquareCheckBig,
-          link: "/teacher",
+          link: "/master-data/teachers",
         },
         {
           id: "2",
@@ -89,29 +111,32 @@ export default function Sidebar({ onSideBar }: type) {
           id: "3",
           name: "Class",
           icon: SquareCheckBig,
-          link: "/class",
+          link: "/master-data/class",
         },
         {
           id: "4",
-          name: "Subject",
+          name: "Subjects",
           icon: SquareCheckBig,
-          link: "/subject",
+          link: "/master-data/subjects",
         },
         {
           id: "5",
-          name: "Schedule",
+          name: "Academic Year & Semester",
           icon: SquareCheckBig,
-          link: "/schedule",
+          link: "/master-data/academic-year",
         },
-        {
-          id: "6",
-          name: "Majore",
-          icon: SquareCheckBig,
-          link: "/majore",
-        },
+        // {
+        //   id: "6",
+        //   name: "Majore",
+        //   icon: SquareCheckBig,
+        //   link: "/master-data/majore",
+        // },
       ],
     },
   ];
+  useEffect(() => {
+    setOpenMenuId(null);
+  }, [pathname]);
 
   return (
     <aside

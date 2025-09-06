@@ -26,8 +26,11 @@ const ProjectListTable = ({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {model.dataTableProjects.map((item) => (
-          <TableRow className="text-white border-b border-[#56577a] hover:bg-transparent">
+        {model.dataTableProjects.map((item, i) => (
+          <TableRow
+            key={i}
+            className="text-white border-b border-[#56577a] hover:bg-transparent"
+          >
             <TableCell className=" flex items-center border-none">
               {item.projectsName}
             </TableCell>

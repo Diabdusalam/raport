@@ -18,7 +18,7 @@ export default function TableMainStudents({
               </th>
             ) : null
           )}
-          <th className="px-4 py-3 w-0 items-center">Action</th>
+          <th className="px-4 py-3 w-0 items-center text-center">Action</th>
         </tr>
       </thead>
       <tbody>

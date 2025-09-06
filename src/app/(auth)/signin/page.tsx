@@ -1,17 +1,17 @@
-import { sign } from "crypto";
+import Image from "next/image";
 
 const signIn = () => {
   return (
     <div className="h-screen w-screen flex flex-col md:flex-row bg-white ">
       <div className="md:w-1/2 h-full flex justify-center items-center md:block relative">
-        <img
-          src="/landing_page/img_auth.png"
+        <Image
+          src="/landing_page/Image_auth.png"
           alt="Short Pants"
           className="w-full h-full rounded-xl object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-transparent rounded-xl"></div>
         <div className="absolute inset-x-0 top-10 md:top-20 flex justify-center text-3xl md:text-9xl font-bold max-md:hidden">
-          {/* <img src={logo} alt="logo" width={400} height={400} /> */}
+          {/* <Image src={logo} alt="logo" width={400} height={400} /> */}
         </div>
       </div>
       <div className="md:w-1/2 flex items-center justify-center mx-4 md:mx-0 max-md:absolute max-md:inset-x-0 max-md:top-10 bg-white bg-opacity-80 p-8 rounded-xl shadow-lg">
@@ -66,7 +66,7 @@ const signIn = () => {
             // onClick={() => googleLogin()}
             className="w-full p-2.5 text-base rounded-lg border border-black flex items-center justify-center text-black font-semibold"
           >
-            <img
+            <Image
               src="/logo/google.png"
               width={32}
               height={32}

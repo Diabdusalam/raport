@@ -1,9 +1,8 @@
 "use client";
+import { AlignJustify } from "lucide-react";
+import Link from "next/link";
 import { FaBell, FaUser } from "react-icons/fa6";
 import { IoMdSettings } from "react-icons/io";
-import Link from "next/link";
-import SearchComponent from "./custom/Seacrh";
-import { AlignJustify } from "lucide-react";
 interface types {
   setOnSideBar: React.Dispatch<React.SetStateAction<boolean>>;
   onSideBar: boolean;
@@ -24,9 +23,9 @@ export default function Navbar({ setOnSideBar, onSideBar }: types) {
         </div>
 
         <div className="flex items-center gap-6">
-          <div className="hidden md:block w-64">
+          {/* <div className="hidden md:block w-64">
             <SearchComponent />
-          </div>
+          </div> */}
 
           <div className="flex items-center gap-6 text-gray-600">
             <Link

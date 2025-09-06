@@ -15,12 +15,10 @@ export default function ButtonSidebarChildren({
   data,
   isActive,
   showName = true,
-  openMenuId,
 }: {
   data: TLinks;
   isActive: boolean;
   showName?: boolean;
-  openMenuId?: string | null;
 }) {
   return (
     <Link href={data.link}>
@@ -39,6 +37,7 @@ export default function ButtonSidebarChildren({
             isActive && "bg-blue-100 text-blue-600 font-semibold"
           )}
         >
+          {/* hover:bg-blue-400 hover:text-white */}
           <span className="text-sm whitespace-nowrap">{data.name}</span>
         </div>
       </div>
